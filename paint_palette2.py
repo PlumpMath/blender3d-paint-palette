@@ -187,12 +187,11 @@ class LoadGimpPalette(bpy.types.Operator):
                     lnescaped = ln.replace("\t", " ").replace("\n", " ")
 
                     lnsections = [tx for tx in lnescaped.split(" ") if tx != ""]
-                    try:
-                        color = [float(rgb)/255 for rgb in [lnsections[0],
-                                                            lnsections[1],
-                                                            lnsections[2]]]
-                    except Exception as e:
-                        raise Exception(str(ln) + str(lnsections))
+
+                    color = [float(rgb)/255 for rgb in [lnsections[0],
+                                                        lnsections[1],
+                                                        lnsections[2]]]
+
                     palette_props.colors[i].color = color
 
                     palette_props.colors[i].name = " ".join(lnsections[3:])
